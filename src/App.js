@@ -1,25 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { Component } from 'react';
+import axios from 'axios';
+import { Switch, Route, Link } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+//import componenets
+import AllTeams from './components/AllTeams/AllTeams.js'
+import TeamDetails from './components/AllTeams/TeamDetail/TeamDetail.js'
+
+class App extends Component {
+  constructor() {
+    super();
+
+    this.apiUrl = 'http://localhost:3000/api/teams'
+    this.state = {
+
+    }
+  }
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">Favorite Team</header>
+        <h1>Favorite Team</h1>
+      </div>
+    );
+  }
 }
 
 export default App;
