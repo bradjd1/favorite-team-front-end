@@ -23,6 +23,25 @@ class App extends Component {
     console.log('teams is ', this.state.teams)
   }
 
+  addTeam = async (event) => {
+    console.log('start addTeam');
+   
+    event.preventDefault();
+    
+    const response = await axios.post(this.apiUrl, {
+      name: event.target.name.value
+    });
+
+    // reset input box on screen to blank
+    event.target.name.value = '';
+
+    const tempTeams = this.state.teams;
+    tempTeams.push(response.data.team);
+    this.setState({ teams: tempTeams });
+
+    console.log('leave addTeam');
+  };
+
   render() {
     return (
       <div className="App">
@@ -35,6 +54,7 @@ class App extends Component {
           <Route path='/teams'
             exact component={() => <AllTeams
             teams={this.state.teams}
+            addTeam={this.addTeam}
             />}
           />
         </Switch>
