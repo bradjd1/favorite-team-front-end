@@ -5,7 +5,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 
 //import componenets
 import AllTeams from './components/AllTeams/AllTeams.js'
-import TeamDetails from './components/AllTeams/TeamDetail/TeamDetail.js'
+import TeamDetail from './components/AllTeams/TeamDetail/TeamDetail.js'
 
 class App extends Component {
   constructor() {
@@ -20,17 +20,17 @@ class App extends Component {
   async componentDidMount() {
     const response = await axios.get(this.apiUrl);
     this.setState({ teams: response.data.teams });
-    console.log('teams is ', this.state.teams)
+    console.log('teams is ', response.data.teams)
   }
 
   addTeam = async (event) => {
-    console.log('start addTeam');
-   
     event.preventDefault();
-    
+
     const response = await axios.post(this.apiUrl, {
       name: event.target.name.value
     });
+
+    console.log('in add team ',response.data)
 
     // reset input box on screen to blank
     event.target.name.value = '';
@@ -39,7 +39,6 @@ class App extends Component {
     tempTeams.push(response.data.team);
     this.setState({ teams: tempTeams });
 
-    console.log('leave addTeam');
   };
 
   render() {
@@ -53,9 +52,15 @@ class App extends Component {
         <Switch>
           <Route path='/teams'
             exact component={() => <AllTeams
-            teams={this.state.teams}
-            addTeam={this.addTeam}
+              teams={this.state.teams}
+              addTeam={this.addTeam}
             />}
+          />
+          <Route path='/teams/:id'
+          component={(routerProps) => <TeamDetail
+          {...routerProps}
+          teams={this.state.teams}
+          />}
           />
         </Switch>
       </div>
