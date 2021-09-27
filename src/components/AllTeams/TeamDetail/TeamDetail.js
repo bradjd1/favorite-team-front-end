@@ -12,7 +12,14 @@ export default function TeamDetail(props) {
 
     return (
         <div className='TeamDetail'>
-            <h2>Players for the {team.name}s</h2>
+            <h2>Players for the {team.name}</h2>
+
+            <form onSubmit={props.addPlayer}>
+                <input type='hidden' name='teamId' value={team.id}/>
+                <input type='text' name='name' />
+                <input type='submit' value='Add Player' />
+            </form>
+
             <ul> {players} </ul>
         </div>
     );

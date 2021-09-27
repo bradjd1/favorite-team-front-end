@@ -41,6 +41,25 @@ class App extends Component {
 
   };
 
+  addPlayer = async (event) => {
+    event.preventDefault();
+    const teamId = event.target.teamId.value;
+    const playerUrl = `${this.apiUrl}/${teamId}/players`;
+    const response = await axios.post(playerUrl, {
+      name: event.target.name.value
+    })
+    const teamResponse = response.data.team;
+    const tempTeam = this.state.teams;
+    const newTeam = tempTeam.map(team => {
+      if(team.id == teamResponse.id) {
+        return teamResponse;
+      } else {
+        return team
+      }
+    })
+    this.setState({ teams: newTeam })
+  };
+
   render() {
     return (
       <div className="App">
@@ -60,6 +79,7 @@ class App extends Component {
           component={(routerProps) => <TeamDetail
           {...routerProps}
           teams={this.state.teams}
+          addPlayer={this.addPlayer}
           />}
           />
         </Switch>
