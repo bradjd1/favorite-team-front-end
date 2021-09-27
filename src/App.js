@@ -13,14 +13,31 @@ class App extends Component {
 
     this.apiUrl = 'http://localhost:3000/api/teams'
     this.state = {
-
+      teams: []
     }
   }
+
+  async componentDidMount() {
+    const response = await axios.get(this.apiUrl);
+    this.setState({ teams: response.data.teams });
+    console.log('teams is ', this.state.teams)
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">Favorite Team</header>
-        <h1>Favorite Team</h1>
+        <header className="App-header">Favorite Teams</header>
+        <h1>My Favorite Teams</h1>
+        <nav>
+          <Link to='/'>Home</Link>
+        </nav>
+        <Switch>
+          <Route path='/teams'
+            exact component={() => <AllTeams
+            teams={this.state.teams}
+            />}
+          />
+        </Switch>
       </div>
     );
   }
