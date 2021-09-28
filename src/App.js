@@ -1,7 +1,7 @@
 import './App.css';
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Switch, Route, Link, Redirect, withRouter } from 'react-router-dom';
 
 //import componenets
 import AllTeams from './components/AllTeams/AllTeams.js'
@@ -20,7 +20,6 @@ class App extends Component {
   async componentDidMount() {
     const response = await axios.get(this.apiUrl);
     this.setState({ teams: response.data.teams });
-    console.log('teams is ', response.data.teams)
   }
 
   addTeam = async (event) => {
@@ -30,8 +29,6 @@ class App extends Component {
       name: event.target.name.value
     });
 
-    console.log('in add team ',response.data)
-
     // reset input box on screen to blank
     event.target.name.value = '';
 
@@ -40,6 +37,27 @@ class App extends Component {
     this.setState({ teams: tempTeams });
 
   };
+
+deleteTeam = async (delId) => {
+  // issue the delete call
+
+   const listPlayerUrl = `${this.apiUrl}/profile/${delId}`;
+   console.log('list player url ',listPlayerUrl)
+  const delTeamResponse = await axios.get(listPlayerUrl)
+  console.log('response data is ',delTeamResponse.data)
+  console.log('in del team ',delTeamResponse.data.Players.length)
+  if (delTeamResponse.data.Players.length == 0) {
+    const response = await axios.delete(`${this.apiUrl}/${delId}`)
+
+    // make a new call to get list of teams and load teams page
+    const responseRedirect = await axios.get(this.apiUrl);
+    this.setState({ teams: responseRedirect.data.teams });
+  } else {
+    // need to delete players first
+    alert('delete players from the team before deleting the team')
+    console.log('players');
+  }
+}
 
   addPlayer = async (event) => {
     event.preventDefault();
@@ -60,19 +78,32 @@ class App extends Component {
     this.setState({ teams: newTeam })
   };
 
+  deletePlayer = async (delId) => {
+    console.log('in del')
+    console.log('id is ',delId)
+    // issue the delete call
+    //'/:teamId/players/:id'
+    const response = await axios.delete(`${this.apiUrl}/${delId}/players/${delId}`)
+  
+    // make a new call to get list of teams and load teams page
+    const responseRedirect = await axios.get(this.apiUrl);
+    this.setState({ teams: responseRedirect.data.teams });
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">Favorite Teams</header>
         <h1>My Favorite Teams</h1>
         <nav>
-          <Link to='/'>Home</Link>
+          <Link to='/'>Home</Link> | <Link to='/teams'>Favorite Teams</Link>
         </nav>
         <Switch>
           <Route path='/teams'
             exact component={() => <AllTeams
               teams={this.state.teams}
               addTeam={this.addTeam}
+              deleteTeam={this.deleteTeam}
             />}
           />
           <Route path='/teams/:id'
@@ -80,6 +111,7 @@ class App extends Component {
           {...routerProps}
           teams={this.state.teams}
           addPlayer={this.addPlayer}
+          deletePlayer={this.deletePlayer}
           />}
           />
         </Switch>
@@ -88,4 +120,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

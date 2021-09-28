@@ -6,7 +6,8 @@ export default function AllTeams(props) {
     const teams = props.teams.map((team) => {
         return (
             <li key={team.id}>
-                <Link to={`/teams/${team.id}`}>{team.name}</Link>
+                <Link to={`/teams/${team.id}`}>{team.name} </Link>
+                <button onClick={() =>props.deleteTeam(team.id)}>Delete</button>
             </li>
         )
     });

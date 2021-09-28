@@ -8,7 +8,8 @@ export default function TeamDetail(props) {
         return team.id == props.match.params.id;
     });
 
-    const players = team.Players.map(player => <li key={player.id}>{player.name}</li>);
+    const players = team.Players.map(player => 
+    <li key={player.id}>{player.name} <button onClick={() =>props.deletePlayer(player.id)}>Delete</button></li>);
 
     return (
         <div className='TeamDetail'>
