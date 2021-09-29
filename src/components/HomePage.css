@@ -1,0 +1,7 @@
+.Homepage {
+    background-image: url("/src/FieldOfDreams.jpg");
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 600px;
+  }

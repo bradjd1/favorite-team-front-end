@@ -1,18 +1,33 @@
-# Getting Started with Create React App
+## Deere Project 4
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the frontend part of an applicaiton which will allow you to list your favorite baseball team(s) and player(s).  You can add or remove teams and players.  If a team has players, you will first need to remove all players before removing the team.
 
-## Available Scripts
+## USER STORIES
 
-In the project directory, you can run:
+- As a sports fan I want a way to list my favorite teams.
+- As a sports fan I want a way to add new teams to my favorites list.
+- As a team fan I want a way to list players on the team.
+- As a team fan I want a way to add players to the team.
+
+## WIRE FRAMES:
+[`WIREFRAMES`](./planning/wireframes.png):
+![wireframe](./planning/wireframes.png)
+
+
+## TECHNOLOGIES USED
+
+- React:
+- API
+- Writing Code: Visual Studio Code
+- Version Control: GitHub
+- Deployment: Heroku
+
 
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
 ### `npm test`
 

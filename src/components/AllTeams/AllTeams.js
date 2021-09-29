@@ -12,7 +12,8 @@ export default function AllTeams(props) {
         )
     });
     return (
-        <div>
+        <div className='AllTeams'>
+        <div className='innerTeam'>
             <h2>Favorite Teams</h2>
             <form onSubmit={props.addTeam}>
                 <label for='team'>Team</label>
@@ -25,7 +26,8 @@ export default function AllTeams(props) {
                 <input type='text' name='city' /> */}
                 <input type='submit' value='Add Team' />
             </form>
-            <ul>{teams}</ul>
+            <ul className='teams'>{teams}</ul>
+        </div>
         </div>
     );
 }

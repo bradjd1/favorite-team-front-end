@@ -1,0 +1,22 @@
+.TeamDetail {
+    text-align: center;
+    /* margin-left: 33%; */
+    /* display: table; */
+    text-align: center;
+    background-image: url("/src/baseball-field.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 570px;
+}
+.TeamDetail .innerDetail {
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+}
+
+.TeamDetail .players {
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.5em;
+}

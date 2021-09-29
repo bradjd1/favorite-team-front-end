@@ -8,20 +8,22 @@ export default function TeamDetail(props) {
         return team.id == props.match.params.id;
     });
 
-    const players = team.Players.map(player => 
-    <li key={player.id}>{player.name} <button onClick={() =>props.deletePlayer(player.id)}>Delete</button></li>);
+    const players = team.Players.map(player =>
+        <li key={player.id}>{player.name} <button onClick={() => props.deletePlayer(player.id)}>Delete</button></li>);
 
     return (
         <div className='TeamDetail'>
-            <h2>Players for the {team.name}</h2>
+            <div className='innerDetail'>
+                <h2>Players for the {team.name}</h2>
 
-            <form onSubmit={props.addPlayer}>
-                <input type='hidden' name='teamId' value={team.id}/>
-                <input type='text' name='name' />
-                <input type='submit' value='Add Player' />
-            </form>
+                <form onSubmit={props.addPlayer}>
+                    <input type='hidden' name='teamId' value={team.id} />
+                    <input type='text' name='name' />
+                    <input type='submit' value='Add Player' />
+                </form>
 
-            <ul> {players} </ul>
+                <ul className='players'> {players} </ul>
+            </div>
         </div>
     );
 }

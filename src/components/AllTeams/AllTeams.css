@@ -1,0 +1,19 @@
+.AllTeams {
+    text-align: center;
+    background-image: url("/src/baseballfield.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 675px;
+}
+.AllTeams .innerTeam {
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+}
+
+.AllTeams .teams {
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.5em;
+}
