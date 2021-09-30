@@ -28,10 +28,16 @@ class App extends Component {
 
     const response = await axios.post(this.apiUrl, {
       name: event.target.name.value,
+      sport: event.target.sport.value,
+      league: event.target.league.value,
+      city: event.target.city.value,
     });
 
     // reset input box on screen to blank
     event.target.name.value = '';
+    event.target.sport.value = '';
+    event.target.league.value = '';
+    event.target.city.value = '';
 
     const tempTeams = this.state.teams;
     tempTeams.push(response.data.team);
@@ -59,8 +65,6 @@ class App extends Component {
   addPlayer = async (event) => {
     event.preventDefault();
     const teamId = event.target.teamId.value;
-    const position = event.target.position.value;
-    console.log('in add player ',teamId,position)
     const playerUrl = `${this.apiUrl}/${teamId}/players`;
     const response = await axios.post(playerUrl, {
       name: event.target.name.value,

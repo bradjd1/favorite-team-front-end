@@ -2,9 +2,7 @@ import React from "react";
 import './TeamDetail.css';
 
 export default function TeamDetail(props) {
-    console.log('in teamdetails ', props.match.params.id)
     const team = props.teams.find(team => {
-        console.log('team is ', team);
         return team.id == props.match.params.id;
     });
 
