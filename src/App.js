@@ -1,7 +1,7 @@
 import './App.css';
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Switch, Route, Link, Redirect, withRouter } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
 
 //import componenets
 import AllTeams from './components/AllTeams/AllTeams.js'
@@ -27,7 +27,7 @@ class App extends Component {
     event.preventDefault();
 
     const response = await axios.post(this.apiUrl, {
-      name: event.target.name.value
+      name: event.target.name.value,
     });
 
     // reset input box on screen to blank
@@ -53,16 +53,18 @@ class App extends Component {
     } else {
       // need to delete players first
       alert('delete players from the team before deleting the team')
-      console.log('players');
     }
   }
 
   addPlayer = async (event) => {
     event.preventDefault();
     const teamId = event.target.teamId.value;
+    const position = event.target.position.value;
+    console.log('in add player ',teamId,position)
     const playerUrl = `${this.apiUrl}/${teamId}/players`;
     const response = await axios.post(playerUrl, {
-      name: event.target.name.value
+      name: event.target.name.value,
+      position: event.target.position.value
     })
     const teamResponse = response.data.team;
     const tempTeam = this.state.teams;
@@ -77,8 +79,6 @@ class App extends Component {
   };
 
   deletePlayer = async (delId) => {
-    console.log('in del')
-    console.log('id is ', delId)
     // issue the delete call
     //'/:teamId/players/:id'
     const response = await axios.delete(`${this.apiUrl}/${delId}/players/${delId}`)
@@ -123,4 +123,4 @@ class App extends Component {
   }
 }
 
-export default withRouter(App);
+export default (App);

@@ -9,7 +9,9 @@ export default function TeamDetail(props) {
     });
 
     const players = team.Players.map(player =>
-        <li key={player.id}>{player.name} <button onClick={() => props.deletePlayer(player.id)}>Delete</button></li>);
+        <li key={player.id}>{player.name} &nbsp; {player.position} &nbsp; 
+          <button onClick={() => props.deletePlayer(player.id)}>Delete</button>
+        </li>);
 
     return (
         <div className='TeamDetail'>
@@ -18,7 +20,10 @@ export default function TeamDetail(props) {
 
                 <form onSubmit={props.addPlayer}>
                     <input type='hidden' name='teamId' value={team.id} />
+                    <label for='name'>Name: </label>
                     <input type='text' name='name' />
+                    <label for='position'>&nbsp; &nbsp; Position: </label>
+                    <input type='text' name='position' />
                     <input type='submit' value='Add Player' />
                 </form>
 
