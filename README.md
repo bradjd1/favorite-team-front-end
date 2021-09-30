@@ -1,6 +1,22 @@
 ## Deere Project 4
 
-This is the frontend part of an applicaiton which will allow you to list your favorite baseball team(s) and player(s).  You can add or remove teams and players.  If a team has players, you will first need to remove all players before removing the team.
+This applicaiton will allow you to list your favorite baseball team(s) and player(s).  You may add or remove teams as the season progresses.  You may add or remove players as trades happen.
+
+This is the front end portion which does the screen navigation and makes the API calls.  The API URL is 'http://localhost:3000/api/teams'
+
+## BASIC FLOW
+- Click on the navigation link to go to Favorite Team
+- Enter the name of your favorite team and click the Add Team button
+- click on the team name to go to the player page
+- Enter the name of the player you wish to add and click the Add Player button
+- You can remove a Player by clicking the Delete button after their name
+- You can remove a Team by first removing all its Players, and then clicking the Delete button
+
+## PROJECT LINKS
+
+- [frontend github repo](https://github.com/bradjd1/favorite-team-front-end)
+- [backend github repo](https://github.com/bradjd1/favorite-team-express-api-bknd)
+
 
 ## USER STORIES
 
@@ -22,64 +38,33 @@ This is the frontend part of an applicaiton which will allow you to list your fa
 - Version Control: GitHub
 - Deployment: Heroku
 
+## CODE SNIPPETS
 
-### `npm start`
+One piece of code which I wanted to call out is checking to see if a team has players assigned before allowing it to be deleted.  This check is to keep database integrity.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```javascript
+    //check if players on the team
+    const listPlayerUrl = `${this.apiUrl}/profile/${delId}`;
+    const delTeamResponse = await axios.get(listPlayerUrl)
+    if (delTeamResponse.data.Players.length == 0) {
+      // there are no players on the team, so delete the team
+      const response = await axios.delete(`${this.apiUrl}/${delId}`)
+
+      // make a new call to get list of teams and show on page
+      const responseRedirect = await axios.get(this.apiUrl);
+      this.setState({ teams: responseRedirect.data.teams });
+    } else {
+      // need to delete players first
+      alert('delete players from the team before deleting the team')
+      console.log('players');
+    }
+```
+
+## NEXT STEPS / FUTURE FEATURES
+- Set up user routes
+- Set up authorization
+- When you choose to delete a team which has players, the application could delete all the players for you, then delete the team.
+- Add a Player detail page
+- The original intent was to capture your favorite baseball teams and their players.  It could be used to capture your favorite teams from other sports as well.
 
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
