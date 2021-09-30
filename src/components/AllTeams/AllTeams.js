@@ -18,15 +18,18 @@ export default function AllTeams(props) {
         <div className='innerTeam'>
             <h2>Favorite Teams</h2>
             <form onSubmit={props.addTeam}>
-                <label for='team'>Team:</label>
+                <div>
+                <label for='team'> &nbsp; &nbsp; &nbsp; Team: </label>
                 <input type='text' name='name' />
-                <label for='sport'> Sport:</label>
+                <label for='sport'> Sport: </label>
                 <input type='text' name='sport' />
-                <label for='league'> League:</label>
+                </div>
+                <div>
+                <label for='league'> League: </label>
                 <input type='text' name='league' />
-                <label for='city'> City:</label>
+                <label for='city'> City: </label>
                 <input type='text' name='city' />
-                &nbsp; 
+               </div>
                 <input type='submit' value='Add Team' />
             </form>
             <ul className='teams'>{teams}</ul>
