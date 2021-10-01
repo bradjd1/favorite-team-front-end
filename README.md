@@ -67,4 +67,6 @@ One piece of code which I wanted to call out is checking to see if a team has pl
 - Add a Player detail page
 - The original intent was to capture your favorite baseball teams and their players.  It could be used to capture your favorite teams from other sports as well.
 
+## IMAGES
+The background images were found on the internet by searching thorugh Vector Stocks free images.
 
