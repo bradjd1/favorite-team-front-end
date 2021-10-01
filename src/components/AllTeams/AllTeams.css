@@ -5,6 +5,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 75vh;
+    /* min-width: 513px; */
 }
 .AllTeams .innerTeam {
     margin-left: auto;
@@ -17,3 +18,35 @@
     font-weight: 600;
     font-size: 1.5em;
 }
+.AllTeams .outerbox {
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+}
+.AllTeams .team {
+    text-align: left;
+}
+.AllTeams .grid-container {
+    display: grid;
+    grid-template-columns: 3fr 2fr 1fr 2fr 1fr;
+    /* grid-template-columns: repeat(5,1fr); */
+}
+.AllTeams form {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    column-gap: 10px;
+    /* margin: 0 8px 0 8px; */
+}
+.AllTeams .submitField {
+    display: grid;
+    grid-template-rows: repeat(2,1fr);
+}
+@media only screen and (max-width: 1000px) {
+    .AllTeams form {
+        /* display: grid; */
+        grid-template-rows: repeat(5,1fr);
+        grid-template-columns: 1fr;
+        column-gap: 0;
+        /* margin: 0 50px; */
+    }
+  }
