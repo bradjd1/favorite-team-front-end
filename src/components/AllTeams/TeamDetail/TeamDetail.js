@@ -7,10 +7,14 @@ export default function TeamDetail(props) {
     });
 
     const players = team.Players.map(player =>
-        <li key={player.id}>{player.name} &nbsp; {player.position} &nbsp; 
-          <button onClick={() => props.deletePlayer(player.id)}>Delete</button>
-        </li>);
-
+        <div key={player.id} className='playerContainer'>
+            <div>{player.name}</div>
+            <div>{player.position}</div>
+            {/* <li key={player.id}>{player.name} &nbsp; {player.position} &nbsp; */}
+            <button className='playerDel' onClick={() => props.deletePlayer(player.id)}>Delete</button>
+            {/* </li> */}
+        </div>
+    );
     return (
         <div className='TeamDetail'>
             <div className='innerDetail'>
@@ -18,11 +22,15 @@ export default function TeamDetail(props) {
 
                 <form onSubmit={props.addPlayer}>
                     <input type='hidden' name='teamId' value={team.id} />
-                    <label for='name'>Name: </label>
-                    <input type='text' name='name' />
-                    <label for='position'>&nbsp; &nbsp; Position: </label>
-                    <input type='text' name='position' />
-                    <input type='submit' value='Add Player' />
+                    <div className='playerName' >
+                        <label for='name'>Name: </label>
+                        <input type='text' name='name' />
+                    </div>
+                    <div className='playerPosition'>
+                        <label for='position'>&nbsp; &nbsp; Position: </label>
+                        <input type='text' name='position'  />
+                    </div>
+                    <input type='submit' value='Add Player' className='playerAdd' />
                 </form>
 
                 <ul className='players'> {players} </ul>

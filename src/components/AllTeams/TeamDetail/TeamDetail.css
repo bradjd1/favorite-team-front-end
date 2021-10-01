@@ -8,6 +8,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 570px;
+    overflow-x: scroll;
 }
 .TeamDetail .innerDetail {
     margin-left: auto;
@@ -19,4 +20,38 @@
     text-align: left;
     font-weight: 600;
     font-size: 1.5em;
+}
+.TeamDetail .playerContainer {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+}
+.TeamDetail .playerName {
+    grid-area: player;
+}
+.TeamDetail .playerPositon {
+    grid-area: position;
+}
+.TeamDetail .playerAdd {
+    grid-area: addBtn;
+    width: 100px;
+}
+.TeamDetail form {
+    display: grid;
+    column-gap: 10px;
+    grid-template-areas: 'player position addBtn';
+}
+.TeamDetail .playerName {
+    display: grid;
+    grid-template-rows: repeat(2,1fr);
+    font-weight: 600;
+    font-size: 1.3em;
+}                     
+.TeamDetail .playerPosition {
+    display: grid;
+    grid-template-rows: repeat(2,1fr);
+    font-weight: 600;
+    font-size: 1.3em;
+}   
+.TeamDetail .playerDel {
+    width: 100px;
 }

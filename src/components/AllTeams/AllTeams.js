@@ -5,17 +5,17 @@ import { Link } from 'react-router-dom';
 export default function AllTeams(props) {
     const teams = props.teams.map((team) => {
         return (
-                
-                <div key={team.id} className='grid-container'>
-                    <div className='listName'>
-                      <Link to={`/teams/${team.id}`}>{team.name}</Link>
-                    </div>
-                    <div className='listSport'>{team.sport}</div>
-                    <div className='listLeague'>{team.league}</div>
-                    <div className='listCity'>{team.city}</div>
-                    <button onClick={() => props.deleteTeam(team.id)}>Delete</button>
 
+            <div key={team.id} className='grid-container'>
+                <div className='listName'>
+                    <Link to={`/teams/${team.id}`}>{team.name}</Link>
                 </div>
+                <div className='listSport'>{team.sport}</div>
+                <div className='listLeague'>{team.league}</div>
+                <div className='listCity'>{team.city}</div>
+                <button onClick={() => props.deleteTeam(team.id)}>Delete</button>
+
+            </div>
         )
     });
     return (
@@ -40,7 +40,7 @@ export default function AllTeams(props) {
                         <input type='text' name='city' />
                     </div>
                     <div className='sub'>
-                        <br/>
+                        <br />
                         <input className='button' type='submit' value='Add Team' />
                     </div>
                 </form>

@@ -41,6 +41,8 @@
 .AllTeams .submitField {
     display: grid;
     grid-template-rows: repeat(2,1fr);
+    font-weight: 600;
+    font-size: 1.2em;
 }
 /* .AllTeams submit {
     justify-content: center;
