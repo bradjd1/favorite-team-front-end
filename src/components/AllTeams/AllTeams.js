@@ -24,7 +24,7 @@ export default function AllTeams(props) {
                 <h2>Favorite Teams</h2>
                 <form onSubmit={props.addTeam}>
                     <div className='submitField field'>
-                        <label for='team'>Team</label>
+                        <label for='team'>Team Name</label>
                         <input type='text' name='name' />
                     </div>
                     <div className='submitField sport'>

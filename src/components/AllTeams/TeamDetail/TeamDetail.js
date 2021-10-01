@@ -28,9 +28,12 @@ export default function TeamDetail(props) {
                     </div>
                     <div className='playerPosition'>
                         <label for='position'>&nbsp; &nbsp; Position: </label>
-                        <input type='text' name='position'  />
+                        <input type='text' name='position' />
                     </div>
-                    <input type='submit' value='Add Player' className='playerAdd' />
+                    <div>
+                        <label>&nbsp;</label>
+                        <input type='submit' value='Add Player' className='playerAdd' />
+                    </div>
                 </form>
 
                 <ul className='players'> {players} </ul>
