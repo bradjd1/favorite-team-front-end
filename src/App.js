@@ -12,8 +12,8 @@ class App extends Component {
   constructor() {
     super();
 
-    this.apiUrl = 'http://localhost:3000/api/teams'
-    // this.apiUrl = "https://favorite-team-bkend.herokuapp.com/api/teams"
+    // this.apiUrl = 'http://localhost:3000/api/teams'
+    this.apiUrl = "https://favorite-team-bkend.herokuapp.com/api/teams"
     this.state = {
       teams: []
     }
