@@ -16,8 +16,9 @@ This is the front end portion which does the screen navigation and makes the API
 
 - [frontend github repo](https://github.com/bradjd1/favorite-team-front-end)
 - [backend github repo](https://github.com/bradjd1/favorite-team-express-api-bknd)
-
-
+- [Heroku deployed front end](https://favorite-team-frontend.herokuapp.com/)
+- [Heroku deployed back end](https://favorite-team-bkend.herokuapp.com/)
+- [Heroku deployed back end teams route](https://favorite-team-bkend.herokuapp.com/api/teams)
 ## USER STORIES
 
 - As a sports fan I want a way to list my favorite teams.
