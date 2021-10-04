@@ -31,6 +31,7 @@ class App extends Component {
   addTeam = async (event) => {
     event.preventDefault();
 
+    if (event.target.name.value) {
     const response = await axios.post(this.apiUrl, {
       name: event.target.name.value,
       sport: event.target.sport.value,
@@ -47,7 +48,9 @@ class App extends Component {
     const tempTeams = this.state.teams;
     tempTeams.push(response.data.team);
     this.setState({ teams: tempTeams });
-
+  } else {
+    alert('Enter a team name');
+  }
   };
 
   deleteTeam = async (delId) => {
