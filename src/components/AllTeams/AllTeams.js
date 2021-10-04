@@ -3,6 +3,8 @@ import './AllTeams.css';
 import { Link } from 'react-router-dom';
 
 export default function AllTeams(props) {
+    // receives an array of teams.  process each team in the array
+    // and build a team line element to return
     const teams = props.teams.map((team) => {
         return (
 

@@ -21,11 +21,13 @@ class App extends Component {
     }
   }
 
+  // Api call to get the teams page
   async componentDidMount() {
     const response = await axios.get(this.apiUrl);
     this.setState({ teams: response.data.teams });
   }
 
+  // api call to add a new team
   addTeam = async (event) => {
     event.preventDefault();
 
@@ -106,24 +108,24 @@ class App extends Component {
         </nav>
         <br></br>
         <div className='imagecontainer'>
-        <Switch>
-          <Route path='/teams'
-            exact component={() => <AllTeams
-              teams={this.state.teams}
-              addTeam={this.addTeam}
-              deleteTeam={this.deleteTeam}
-            />}
-          />
-          <Route path='/teams/:id'
-            component={(routerProps) => <TeamDetail
-              {...routerProps}
-              teams={this.state.teams}
-              addPlayer={this.addPlayer}
-              deletePlayer={this.deletePlayer}
-            />}
-          />
-          <Route path='/' component={HomePage}/>
-        </Switch>
+          <Switch>
+            <Route path='/teams'
+              exact component={() => <AllTeams
+                teams={this.state.teams}
+                addTeam={this.addTeam}
+                deleteTeam={this.deleteTeam}
+              />}
+            />
+            <Route path='/teams/:id'
+              component={(routerProps) => <TeamDetail
+                {...routerProps}
+                teams={this.state.teams}
+                addPlayer={this.addPlayer}
+                deletePlayer={this.deletePlayer}
+              />}
+            />
+            <Route path='/' component={HomePage} />
+          </Switch>
         </div>
       </div>
     );

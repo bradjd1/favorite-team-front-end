@@ -6,6 +6,8 @@ export default function TeamDetail(props) {
         return team.id == props.match.params.id;
     });
 
+    // a team has an array containing the players on the team
+    // loop through the players array and build a Player line item
     const players = team.Players.map(player =>
         <div key={player.id} className='playerContainer'>
             <div>{player.name}</div>

@@ -13,7 +13,6 @@
     margin-right: auto;
     display: table;
 }
-
 .AllTeams .teams {
     text-align: left;
     font-weight: 600;
@@ -46,9 +45,7 @@
     font-weight: 600;
     font-size: 1.2em;
 }
-/* .AllTeams submit {
-    justify-content: center;
-} */
+
 @media only screen and (max-width: 850px) {
     .AllTeams form {
         /* grid-template-rows: repeat(5,1fr);
@@ -82,6 +79,7 @@
         min-height: 85vh;
     }
   }
+  
   .AllTeams .sub {
       grid-area: btn;
   }
