@@ -30,6 +30,9 @@ This is the front end portion which does the screen navigation and makes the API
 [`WIREFRAMES`](./planning/wireframes.png):
 ![wireframe](./planning/wireframes.png)
 
+[`WIREFRAMES2`](./planning/wireframes2.png):
+![wireframes2](./planning/wireframes2.png)
+
 
 ## TECHNOLOGIES USED
 
@@ -66,8 +69,17 @@ One piece of code which I wanted to call out is checking to see if a team has pl
 - Set up authorization
 - When you choose to delete a team which has players, the application could delete all the players for you, then delete the team.
 - Add a Player detail page
+- Add update capability to the teams and players pages so you don't have to delete and re-create to change/update information
 - The original intent was to capture your favorite baseball teams and their players.  It could be used to capture your favorite teams from other sports as well.
 
 ## IMAGES
 The background images were found on the internet by searching thorugh Vector Stocks free images.
 
+## Set Up
+
+1. Fork and clone this repo
+1. `cd` into the folder and run `npm install`
+
+1. in App.js tell the apiUrl if you are running locally or from the deployed Heroku site
+
+1. run npm start

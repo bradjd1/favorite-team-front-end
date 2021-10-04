@@ -12,7 +12,9 @@ class App extends Component {
   constructor() {
     super();
 
+    // This URL is to run locally
     // this.apiUrl = 'http://localhost:3000/api/teams'
+    // This URL is to run from the deployed Heroku app
     this.apiUrl = "https://favorite-team-bkend.herokuapp.com/api/teams"
     this.state = {
       teams: []
