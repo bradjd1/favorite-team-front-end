@@ -2,7 +2,7 @@
 
 This applicaiton will allow you to list your favorite baseball team(s) and player(s).  You may add or remove teams as the season progresses.  You may add or remove players as trades happen.
 
-This is the front end portion which does the screen navigation and makes the API calls.  The API URL is 'http://localhost:3000/api/teams'
+This is the front end portion which does the screen navigation and makes the API calls.  The local API URL is 'http://localhost:3000/api/teams'.  The Heroku deployed URL is 'https://favorite-team-frontend.herokuapp.com/'.
 
 ## BASIC FLOW
 - Click on the navigation link to go to Favorite Team
